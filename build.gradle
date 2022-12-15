@@ -29,6 +29,18 @@ java {
 	withSourcesJar()
 }
 
+publishing {
+	publications {
+		release(MavenPublication) {
+			groupId = 'com.github.vaylor27'
+			artifactId = 'resized'
+			version = '1.0'
+
+		}
+	}
+}
+
+
 jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
