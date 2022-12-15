@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.topsekret.oversized.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BookCloningRecipeMixin",
+    "MapCloningRecipeMixin",
+    "ShapedRecipeMixin",
+    "ShapelessRecipeSerializerMixin",
+    "SuspiciousStewRecipeMixin",
+    "TippedArrowRecipeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
