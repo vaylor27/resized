@@ -30,12 +30,17 @@ java {
 }
 
 publishing {
-	publications {
-		release(MavenPublication) {
-			groupId = 'com.github.vaylor27'
-			artifactId = 'resized'
-			version = '1.0'
+	afterEvaluate {
+		publications {
+			release(MavenPublication) {
+				groupId = 'com.github.vaylor27'
+				artifactId = 'resized'
+				version = '1.0'
 
+				afterEvaluate {
+					from components.java
+				}
+			}
 		}
 	}
 }
