@@ -1,5 +1,3 @@
 before_install:
-  - wget https://github.com/sormuras/bach/raw/releases/11/install-jdk.sh
-  - source install-jdk.sh --feature 17
-env:
-  ENVIRONMENT: "production"
+  - sdk install java 17.0.4-open
+  - sdk use java 17.0.4-open
