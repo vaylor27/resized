@@ -8,6 +8,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
+group = project.maven_group
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -29,19 +30,27 @@ java {
 	withSourcesJar()
 }
 
+// configure the maven publication
 publishing {
-	afterEvaluate {
-		publications {
-			release(MavenPublication) {
-				groupId = 'com.github.vaylor27'
-				artifactId = 'resized'
-				version = '1.0'
-
-				afterEvaluate {
-					from components.java
-				}
+	publications {
+		mavenJava(MavenPublication) {
+			// add all the jars that should be included when publishing to maven
+			artifact(remapJar) {
+				builtBy remapJar
+			}
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
 			}
 		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+		mavenLocal()
 	}
 }
 
